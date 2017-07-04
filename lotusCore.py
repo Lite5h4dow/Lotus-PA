@@ -12,9 +12,10 @@ even be added to as users need.
 try:
     import dictionary.py
     break
-except ValueError:
+except ImportError:
     print("Warning, Lotus is missing her dictionary, she will not be able to execute complex commands.")
 
+#
 commRunApp = False
 commAppSelect = None
 commShutdown = False
