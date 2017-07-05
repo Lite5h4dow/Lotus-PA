@@ -12,10 +12,29 @@ import lotusCore
 import lotusDictionary
 import sys
 
-lotusActive = False
+#base variables
+lotusActive = True
 mode = 0
 modeChache = ["Dev","Normal","Vehicle","Home"]
 verNum = 0.01
 
 #terminal system
-print
+print("Welcome to Lotus ver:" + str(verNum))
+while lotusActive == True:
+    #Command Variables
+    commRun = False
+    commProgram = None
+
+    userInput = raw_input("enter command: ")
+
+    userInput = userInput.lower()
+    userInput = userInput.split()
+    for i in userInput:
+        if i in lotusDictionary.runSystem:
+            commRun = True
+            break
+        if i in lotusDictionary.programNames:
+            commProgram = i
+            break
+    if commRun == True:
+        print("you requested to run " + commProgram)
