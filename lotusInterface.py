@@ -11,7 +11,6 @@
 import lotusCore
 import lotusDictionary
 import sys
-import pyttsx
 
 #base variables
 lotusActive = True
@@ -33,18 +32,17 @@ while lotusActive == True:
     for i in userInput:
         if i in lotusDictionary.runSystem:
             commRun = True
-
         if i in lotusDictionary.programNames:
             commProgram = i
-
         if i in lotusDictionary.shutdowns:
             lotusActive = False
+        if i in lotusDictionary.greetings:
+            print(lotusDictionary.greetings['''put random int here'''])
 
     if commRun == True:
         if commProgram == None:
-            print("Error 1: Warning, System may be broken")
-
+            print("Error 1: Program Could Not Be Found")
         elif commProgram not in lotusDictionary.programNames:
-            print("Error 2: Program Could Not Be Found")
+            print("Error 1: Program Could Not Be Found")
         else:
             print("you requested to run " , commProgram)
