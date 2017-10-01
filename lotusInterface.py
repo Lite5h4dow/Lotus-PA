@@ -11,6 +11,7 @@
 import lotusCore
 import lotusDictionary
 import sys
+import pyttsx
 
 #base variables
 lotusActive = True
@@ -25,16 +26,25 @@ while lotusActive == True:
     commRun = False
     commProgram = None
 
-    userInput = raw_input("enter command: ")
+    userInput = input("enter command: ")
 
     userInput = userInput.lower()
     userInput = userInput.split()
     for i in userInput:
         if i in lotusDictionary.runSystem:
             commRun = True
-            break
+
         if i in lotusDictionary.programNames:
             commProgram = i
-            break
+
+        if i in lotusDictionary.shutdowns:
+            lotusActive = False
+
     if commRun == True:
-        print("you requested to run " + commProgram)
+        if commProgram == None:
+            print("Error 1: Warning, System may be broken")
+
+        elif commProgram not in lotusDictionary.programNames:
+            print("Error 2: Program Could Not Be Found")
+        else:
+            print("you requested to run " , commProgram)
