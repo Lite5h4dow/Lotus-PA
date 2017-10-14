@@ -1,0 +1,27 @@
+run:
+  - run
+  - launch
+  - start
+  - open
+
+greetings:
+  - hello
+  - hey
+  - heya
+  - sup
+  - whats up
+  - hola
+  - oi
+
+disable:
+  - disable
+  - sleep
+  - shutdown
+  - shut down
+  - deactivate
+  - turn off
+
+enable:
+  - enable
+  - wake
+  - reactivate

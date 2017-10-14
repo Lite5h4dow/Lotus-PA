@@ -38,6 +38,8 @@ while lotusActive == True:
             lotusActive = False
         if i in lotusDictionary.greetings:
             print(lotusDictionary.greetings['''put random int here'''])
+        if i  == "list" and i == "programs":
+            lotusCore.listPrograms
 
     if commRun == True:
         if commProgram == None:
