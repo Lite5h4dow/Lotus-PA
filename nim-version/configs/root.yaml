@@ -7,13 +7,13 @@
 # Lotus is a Multi functional Personal asistant designed primerally for people
 # like me, nerds, tech enthusiasts, gamers. she is fully customisable and can
 # even be added to as users need
-defaultMode:
+defaultMode: 0
 
 modes:
-  - vheicle
+  - pc
   - mobile
   - laptop
-  - pc
+  - vheicle
   - home
 
 interaction:

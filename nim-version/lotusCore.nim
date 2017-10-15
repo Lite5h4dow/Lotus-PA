@@ -14,4 +14,16 @@
 # Core Tasks
 # Step 1 for the first launch i need to propogate the list of installed programs.
 # Step 2 i need to find the language on the system.
-# Step 3 
+# Step 3
+
+import yaml
+import os
+import streams
+import lotusConfigManager
+import lotusInterface
+
+var
+  data = newFileStream("configs/root.yaml")
+  config = ConfigTemp.new()
+
+data.load(config)
