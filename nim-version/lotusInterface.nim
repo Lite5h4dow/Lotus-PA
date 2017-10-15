@@ -7,3 +7,6 @@
 # Lotus is a Multi functional Personal asistant designed primerally for people
 # like me, nerds, tech enthusiasts, gamers. she is fully customisable and can
 # even be added to as users need
+
+# Inteface tasks
+# Managing the UI, Terminal and Voice input options.
