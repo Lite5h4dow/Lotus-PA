@@ -22,8 +22,15 @@ import streams
 import lotusConfigManager
 import lotusInterface
 
+
 var
+  active = true
   data = newFileStream("configs/root.yaml")
   config = ConfigTemp.new()
 
 data.load(config)
+
+while active:
+  echo "enter input: "
+  var input = readLine(stdin)
+  echo input
