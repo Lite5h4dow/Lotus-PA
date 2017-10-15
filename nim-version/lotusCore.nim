@@ -21,16 +21,20 @@ import os
 import streams
 import lotusConfigManager
 import lotusInterface
-
+import strutils
 
 var
-  active = true
   data = newFileStream("configs/root.yaml")
   config = ConfigTemp.new()
 
 data.load(config)
 
-while active:
-  echo "enter input: "
-  var input = readLine(stdin)
-  echo input
+proc mainLoop():
+  while true:
+    echo "enter input: "
+    var input = readLine(stdin)
+    for i in split(toLower(input)):
+      if i in config.disable:
+        break
+      echo "still in loop B"
+    echo "still in loop A"

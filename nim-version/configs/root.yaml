@@ -40,11 +40,14 @@ disable:
   - disable
   - sleep
   - shutdown
-  - shut down
   - deactivate
   - turn off
+  - exit
+  - end
 
 enable:
+  - start
+  - enter
   - enable
   - wake
   - reactivate
