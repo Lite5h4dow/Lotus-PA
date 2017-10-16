@@ -29,12 +29,12 @@ var
 
 data.load(config)
 
-proc mainLoop():
+block mainLoop:
   while true:
     echo "enter input: "
     var input = readLine(stdin)
     for i in split(toLower(input)):
       if i in config.disable:
-        break
+        break mainLoop
       echo "still in loop B"
     echo "still in loop A"
