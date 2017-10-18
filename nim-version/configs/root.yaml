@@ -46,7 +46,6 @@ disable:
   - end
 
 enable:
-  - start
   - enter
   - enable
   - wake

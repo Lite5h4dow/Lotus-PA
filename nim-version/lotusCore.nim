@@ -24,10 +24,11 @@ import lotusInterface
 import strutils
 
 var
-  data = newFileStream("configs/root.yaml")
+  runProgram = false
+  programSelect = 0
   config = ConfigTemp.new()
 
-data.load(config)
+newFileStream("configs/root.yaml").load(config)
 
 block mainLoop:
   while true:
@@ -35,6 +36,12 @@ block mainLoop:
     var input = readLine(stdin)
     for i in split(toLower(input)):
       if i in config.disable:
+        echo "leaving loop"
         break mainLoop
+      if i in config.run:
+        runProgram = true
+        echo "Run's a Program"
+      if i in config.interaction:
+        echo "you want to switch interaction mode to", i
       echo "still in loop B"
     echo "still in loop A"
