@@ -25,23 +25,35 @@ import strutils
 
 var
   runProgram = false
-  programSelect = 0
+  programSelect = "Null"
   config = ConfigTemp.new()
+  library = ApplicationLibrary.new()
 
 newFileStream("configs/root.yaml").load(config)
+newFileStream("configs/appLication.yaml").load(library)
 
 block mainLoop:
   while true:
     echo "enter input: "
     var input = readLine(stdin)
     for i in split(toLower(input)):
+
+      if i in library.applist:
+        programSelect = i
+
       if i in config.disable:
         echo "leaving loop"
         break mainLoop
+
       if i in config.run:
         runProgram = true
         echo "Run's a Program"
+
       if i in config.interaction:
         echo "you want to switch interaction mode to", i
       echo "still in loop B"
+
+      if runProgram:
+        echo i
+
     echo "still in loop A"

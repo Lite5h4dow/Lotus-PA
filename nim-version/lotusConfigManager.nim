@@ -18,3 +18,5 @@ type ConfigTemp* = object
   enable*: seq[string]
 
 type ApplicationLibrary* = object
+  system*: seq[string]
+  applist*: seq[string]
