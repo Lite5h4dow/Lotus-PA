@@ -30,13 +30,18 @@ var
   library = ApplicationLibrary.new()
 
 newFileStream("configs/root.yaml").load(config)
-newFileStream("configs/appLication.yaml").load(library)
+newFileStream("configs/appLibrary.yaml").load(library)
+
+proc ApplicationLaunch():void=
+  if runProgram:
+    if programSelect != "Null":
+      echo "program ", programSelect, "has been selected for launch"
 
 block mainLoop:
   while true:
     echo "enter input: "
     var input = readLine(stdin)
-    for i in split(toLower(input)):
+    for i in split(toLowerAscii(input)):
 
       if i in library.applist:
         programSelect = i
@@ -54,6 +59,8 @@ block mainLoop:
       echo "still in loop B"
 
       if runProgram:
-        echo i
+        echo "program ", programSelect, " Has been detected for selection."
+
+      ApplicationLaunch()
 
     echo "still in loop A"
