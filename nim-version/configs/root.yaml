@@ -16,6 +16,20 @@ modes:
   - vheicle
   - home
 
+confirm:
+  - yeah
+  - yes
+  - confirm
+  - affirmative
+  - start
+
+decline:
+  - nope
+  - no
+  - stop
+  - decline
+  - denied
+
 interaction:
   - voice
   - terminal
@@ -50,3 +64,9 @@ enable:
   - enable
   - wake
   - reactivate
+
+list:
+  - list
+  - show
+  - display
+  - view

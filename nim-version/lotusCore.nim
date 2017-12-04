@@ -23,9 +23,12 @@ import lotusConfigManager
 import lotusInterface
 import strutils
 
+type EnvConf* = object
+  progSelect: string
+  runProgram: bool
+
 var
-  runProgram = false
-  programSelect = "Null"
+  envConf = EnvConf.new()
   config = ConfigTemp.new()
   library = ApplicationLibrary.new()
 
@@ -33,33 +36,27 @@ newFileStream("configs/root.yaml").load(config)
 newFileStream("configs/appLibrary.yaml").load(library)
 
 proc ApplicationLaunch():void=
-  if runProgram:
-    if programSelect != "Null":
-      echo "program ", programSelect, "has been selected for launch"
+  if envConf.runProgram:
+    if envConf.progSelect != "Null":
+      echo "program ", envConf.progSelect, " has been selected for launch"
 
 block mainLoop:
   while true:
     echo "enter input: "
     var input = readLine(stdin)
+    
     for i in split(toLowerAscii(input)):
 
       if i in library.applist:
-        programSelect = i
+        envConf.progSelect = i
 
       if i in config.disable:
         echo "leaving loop"
         break mainLoop
 
-      if i in config.run:
-        runProgram = true
-        echo "Run's a Program"
-
       if i in config.interaction:
         echo "you want to switch interaction mode to", i
       echo "still in loop B"
-
-      if runProgram:
-        echo "program ", programSelect, " Has been detected for selection."
 
       ApplicationLaunch()
 

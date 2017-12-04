@@ -16,6 +16,9 @@ type ConfigTemp* = object
   greetings*: seq[string]
   disable*: seq[string]
   enable*: seq[string]
+  list*: seq[string]
+  confirm*: seq[string]
+  decline*: seq[string]
 
 type ApplicationLibrary* = object
   system*: seq[string]
