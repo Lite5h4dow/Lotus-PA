@@ -35,29 +35,8 @@ var
 newFileStream("configs/root.yaml").load(config)
 newFileStream("configs/appLibrary.yaml").load(library)
 
-proc ApplicationLaunch():void=
-  if envConf.runProgram:
-    if envConf.progSelect != "Null":
-      echo "program ", envConf.progSelect, " has been selected for launch"
 
 block mainLoop:
   while true:
-    echo "enter input: "
-    var input = readLine(stdin)
-    
-    for i in split(toLowerAscii(input)):
-
-      if i in library.applist:
-        envConf.progSelect = i
-
-      if i in config.disable:
-        echo "leaving loop"
-        break mainLoop
-
-      if i in config.interaction:
-        echo "you want to switch interaction mode to", i
-      echo "still in loop B"
-
-      ApplicationLaunch()
-
-    echo "still in loop A"
+    for i in split(toLowerAscii(terminalInput())):
+      echo i

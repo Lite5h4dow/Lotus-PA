@@ -10,3 +10,9 @@
 
 # Inteface tasks
 # Managing the UI, Terminal and Voice input options.
+
+# aquires user terminal input and allows the user to give a request then forwards it as its result.
+proc terminalInput*():string=
+  echo "enter input:"
+  var input = readLine(stdin)
+  result = input
