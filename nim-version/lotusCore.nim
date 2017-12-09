@@ -11,7 +11,7 @@
 # Core Functions:
 # Manage main tasks and complete system tasks
 
-# Core Tasks
+# Tasks
 # Step 1 for the first launch i need to propogate the list of installed programs.
 # Step 2 i need to find the language on the system.
 # Step 3
@@ -25,18 +25,27 @@ import strutils
 
 type EnvConf* = object
   progSelect: string
-  runProgram: bool
+  runProg: bool
+  debug: bool
 
 var
   envConf = EnvConf.new()
-  config = ConfigTemp.new()
-  library = ApplicationLibrary.new()
-
-newFileStream("configs/root.yaml").load(config)
-newFileStream("configs/appLibrary.yaml").load(library)
-
 
 block mainLoop:
   while true:
+    envConf.progSelect = ""
     for i in split(toLowerAscii(terminalInput())):
-      echo i
+      if lotusExit(i):
+        break mainLoop
+
+      if lotusApp(i) != "":
+        echo lotusApp(i), " is selected for launch"
+        envConf.progSelect = lotusApp(i)
+
+      if lotusLaunch(i):
+        envConf.runProg = true
+        echo "program is ready to launch"
+      else:
+        envConf.runprog = false
+
+      #echo i, envConf.progSelect #debug Line

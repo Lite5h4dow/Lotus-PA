@@ -9,10 +9,47 @@
 # even be added to as users need
 
 # Inteface tasks
-# Managing the UI, Terminal and Voice input options.
+# Managing the UI, Terminal and Voice input options and hostong the commands for the main interface system.
 
 # aquires user terminal input and allows the user to give a request then forwards it as its result.
+import os
+import streams
+import yaml
+import strutils
+import lotusConfigManager
+import lotusCore
+
+var
+  config = ConfigTemp.new()
+  library = ApplicationLibrary.new()
+
+newFileStream("configs/root.yaml").load(config)
+newFileStream("configs/appLibrary.yaml").load(library)
+
+
+
+
+
 proc terminalInput*():string=
   echo "enter input:"
   var input = readLine(stdin)
   result = input
+
+# looks for an exit command then exits if one is found.
+proc lotusExit*(e: string):bool=
+  if e in config.disable:
+    result = true
+  else:
+    result = false
+
+proc lotusApp*(e: string):string=
+  if e in library.applist:
+    result = e
+  else:
+    result = ""
+
+proc lotusLaunch*(e: string):bool=
+  if e in config.run:
+    result = true
+  else:
+    result = false
