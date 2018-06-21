@@ -10,3 +10,16 @@
 
 # Inteface tasks
 # Managing the UI, Terminal and Voice input options.
+
+#[
+UI Libraries i might want to try:
+
+iup
+
+Nuklear
+
+nimx
+]#
+
+#Init
+#import iup

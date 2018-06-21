@@ -9,6 +9,8 @@
 # even be added to as users need
 defaultMode: 0
 
+username: Tony
+
 modes:
   - pc
   - mobile
@@ -17,13 +19,17 @@ modes:
   - home
 
 confirm:
+  - y
   - yeah
   - yes
   - confirm
   - affirmative
   - start
+  - roger
+  - roger, dodger
 
 decline:
+  - n
   - nope
   - no
   - stop

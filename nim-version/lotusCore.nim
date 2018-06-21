@@ -16,12 +16,15 @@
 # Step 2 i need to find the language on the system.
 # Step 3
 
+#init
 import yaml
 import os
 import streams
 import lotusConfigManager
 import lotusInterface
 import strutils
+import random
+
 
 type EnvConf* = object
   progSelect: string
@@ -32,6 +35,9 @@ var
   config = ConfigTemp.new()
   library = ApplicationLibrary.new()
 
+  runReq:bool
+
+#backend
 newFileStream("configs/root.yaml").load(config)
 newFileStream("configs/appLibrary.yaml").load(library)
 
@@ -42,13 +48,42 @@ proc ApplicationLaunch():void=
 
 block mainLoop:
   while true:
+    runReq = false
+    randomize()
     echo "enter input: "
     var input = readLine(stdin)
-    
+
+    if "set username" in toLowerAscii(input):
+      echo "want to set your username?"
+      case toLowerAscii(readLine(stdin)):
+      of "y", "yes":
+        echo rand(config.confirm), ", changing username"
+
+      of "n", "no":
+        echo "nevermind then"
+
+
     for i in split(toLowerAscii(input)):
 
+      if i in config.greetings:
+        echo rand(config.greetings), " ", config.username
+
+      if i in config.run:
+        runReq = true
+
       if i in library.applist:
-        envConf.progSelect = i
+        case runReq:
+        of false:
+          echo "Do you want to launch ", i, " ?"
+          var response = readLine(stdin)
+          case toLowerAscii(response):
+          of "y", "yes":
+            echo "launching ", i
+          of "n", "no":
+            echo rand(config.confirm), ", launching ", i
+        of true:
+          echo rand(config.confirm), ", launching ", i
+
 
       if i in config.disable:
         echo "leaving loop"

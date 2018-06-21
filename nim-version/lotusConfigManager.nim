@@ -10,6 +10,7 @@
 
 type ConfigTemp* = object
   defaultMode*: int
+  username*: string
   modes*: seq[string]
   interaction*: seq[string]
   run*: seq[string]
