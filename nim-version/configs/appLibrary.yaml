@@ -7,16 +7,3 @@
 # Lotus is a Multi functional Personal asistant designed primerally for people
 # like me, nerds, tech enthusiasts, gamers. she is fully customisable and can
 # even be added to as users need
-
-system:
-  - linux
-  - windows
-  - osx(machine)
-  - android
-  - osx(mobile)
-
-applist:
-  - discord
-  - steam
-  - atom
-  - terminal

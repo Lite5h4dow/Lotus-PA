@@ -21,7 +21,6 @@ type ConfigTemp* = object
   list*: seq[string]
   confirm*: seq[string]
   decline*: seq[string]
+  confirmResponse*:seq[string]
 
 type ApplicationLibrary* = object
-  system*: seq[string]
-  applist*: seq[string]

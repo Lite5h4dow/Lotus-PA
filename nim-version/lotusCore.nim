@@ -23,6 +23,7 @@ import streams
 import lotusConfigManager
 import lotusInterface
 import strutils
+import sequtils
 import random
 
 
@@ -36,18 +37,18 @@ var
   library = ApplicationLibrary.new()
 
   runReq:bool
+  runQue:seq[string]
 
 #backend
 newFileStream("configs/root.yaml").load(config)
 newFileStream("configs/appLibrary.yaml").load(library)
 
-proc ApplicationLaunch():void=
-  if envConf.runProgram:
-    if envConf.progSelect != "Null":
-      echo "program ", envConf.progSelect, " has been selected for launch"
+proc ApplicationLaunch(app:string):void=
+  echo "wtf do i do?!"
 
 block mainLoop:
   while true:
+    runQue = @[]
     runReq = false
     randomize()
     echo "enter input: "
@@ -57,7 +58,7 @@ block mainLoop:
       echo "want to set your username?"
       case toLowerAscii(readLine(stdin)):
       of "y", "yes":
-        echo rand(config.confirm), ", changing username"
+        echo rand(config.confirmResponse), ", changing username"
       of "n", "no":
         echo "nevermind then"
       else:
@@ -75,15 +76,10 @@ block mainLoop:
       if i in library.applist:
         case runReq:
         of false:
-          echo "Do you want to launch ", i, " ?"
-          var response = readLine(stdin)
-          case toLowerAscii(response):
-          of "y", "yes":
-            echo "launching ", i
-          of "n", "no":
-            echo rand(config.confirm), ", launching ", i
+          runQue.add(i)
         of true:
-          echo rand(config.confirm), ", launching ", i
+          echo rand(config.confirmResponse), ", launching ", i
+          ApplicationLaunch(i)
 
 
       if i in config.disable:
@@ -92,8 +88,6 @@ block mainLoop:
 
       if i in config.interaction:
         echo "you want to switch interaction mode to", i
-      echo "still in loop B"
 
-      ApplicationLaunch()
-
-    echo "still in loop A"
+    for i in runQue:
+      ApplicationLaunch(i)

@@ -60,6 +60,7 @@ greetings:
   - whats up
   - hola
   - oi
+  - hi
 
 disable:
   - disable
@@ -81,3 +82,11 @@ list:
   - show
   - display
   - view
+
+confirmResponse:
+  - sure
+  - on it
+  - for sure
+  - roger
+  - copy that
+  - ten, four
