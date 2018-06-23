@@ -58,9 +58,10 @@ block mainLoop:
       case toLowerAscii(readLine(stdin)):
       of "y", "yes":
         echo rand(config.confirm), ", changing username"
-
       of "n", "no":
         echo "nevermind then"
+      else:
+        echo "dosen't look like an option"
 
 
     for i in split(toLowerAscii(input)):

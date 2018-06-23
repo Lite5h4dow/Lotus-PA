@@ -47,6 +47,11 @@ run:
   - start
   - open
 
+edit:
+  - change
+  - set
+  - edit
+
 greetings:
   - hello
   - hey

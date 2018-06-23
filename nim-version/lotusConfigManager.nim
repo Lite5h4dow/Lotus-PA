@@ -14,6 +14,7 @@ type ConfigTemp* = object
   modes*: seq[string]
   interaction*: seq[string]
   run*: seq[string]
+  edit*: seq[string]
   greetings*: seq[string]
   disable*: seq[string]
   enable*: seq[string]
