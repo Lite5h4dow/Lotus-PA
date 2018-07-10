@@ -24,3 +24,4 @@ type ConfigTemp* = object
   confirmResponse*:seq[string]
 
 type ApplicationLibrary* = object
+  apps*: seq[string]

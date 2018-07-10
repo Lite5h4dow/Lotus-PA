@@ -38,10 +38,10 @@ var
 
   runReq:bool
   runQue:seq[string]
-
+#
 #backend
 newFileStream("configs/root.yaml").load(config)
-newFileStream("configs/appLibrary.yaml").load(library)
+# newFileStream("configs/appLibrary.yaml").load(library)
 
 proc ApplicationLaunch(app:string):void=
   echo "wtf do i do?!"
@@ -62,7 +62,7 @@ block mainLoop:
       of "n", "no":
         echo "nevermind then"
       else:
-        echo "dosen't look like an option"
+        echo "I BREAK YOUR CODE!!! :< t: Marjaana"
 
 
     for i in split(toLowerAscii(input)):
